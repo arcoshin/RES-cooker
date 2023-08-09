@@ -1,0 +1,65 @@
+# ################################################################################################# #
+# 此文件是【開發環境】的配置文件，必須在主配置中通過spring.profiles.active激活此配置，此文件中的各配置才會生效 #
+# ################################################################################################# #
+
+# 服務器的配置
+server:
+  # 服務佔用的端口
+  port: 9080
+
+# Spring的配置
+spring:
+  # 數據源的配置
+  datasource:
+    # 連接數據庫的URL
+    url: jdbc:mysql://localhost:3306/rescookerdb?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Taipei
+    # 數據庫用戶名
+    username: root
+    # 數據庫密碼
+    password: root
+    # Druid連接池的配置
+    druid:
+      # 初始化連接數量
+      initial-size: 1
+      # 最大激活數量
+      max-active: 3
+
+  # servlet配置
+  servlet:
+    # 上傳配置
+    multipart:
+    # 最大文件尺寸
+      max-file-size: 100MB
+    # 最大請求尺寸
+      max-request-size: 100MB
+
+# 日誌配置
+logging:
+  # 顯示級別
+  level:
+    # 某根包（配置將應用於此包及子孫包）的顯示級別
+    cn.tedu.tea: trace
+
+# RES餐廳的自定義配置
+res-cooker:
+  # 數據訪問的相關配置
+  dao:
+    # 查詢數據時，默認的每頁記錄數，建議值爲10~30之間
+    default-query-page-size: 5
+
+  # 文件上傳的配置
+  upload:
+    # 對外訪問的主機，必須使用"/"作為最後一個字符
+    host: http://localhost:${server.port}/
+    # 上傳的根級文件夾名稱，必須使用"/"作為最後一個字符
+    root-dir-name: C:/Users/User/Pictures/res-cooker-file/
+    # 上傳的文件夾名稱，也會作為訪問資源時的URL第一級目錄，必須使用"/"作為最後一個字符
+    base-dir-name: resources/
+    # 文章圖片
+    article-image:
+      # 允許的文件類型(MINE)
+      types: image/jpeg,image/png
+      # 最大尺寸，單位為MB
+      max-size: 25
+
+
