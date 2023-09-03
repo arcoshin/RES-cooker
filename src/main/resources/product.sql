@@ -48,3 +48,14 @@ CREATE TABLE product_maker
     created_time   datetime     NOT NULL COMMENT '廠商新增日期',
     modified_time  datetime     NOT NULL COMMENT '最後修改時間'
 );
+
+###商品交易紀錄表
+CREATE TABLE product_trade
+(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '交易紀錄編號',
+    list_id BIGINT NOT NULL COMMENT '訂單編號',
+    product_id BIGINT NOT NULL COMMENT '商品編號',
+    trading INT(10) NOT NULL COMMENT '交易數量',
+    created_time DATETIME COMMENT '訂單交易時間',
+    modified_time DATETIME COMMENT '最後修改時間'
+)
