@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.rescooker.product.dao.mapper.ProductMapper">
+
+    <!--    ProductStandardVO getStandardById(Long id);-->
+    <select id="getStandardById"
+            resultType="com.example.rescooker.product.pojo.vo.ProductStandardVO">
+        SELECT
+        <include refid="standardQueryFields"/>
+        FROM
+        rescookerdb.product_info
+        WHERE
+        product_info.id = #{id}
+    </select>
+
+    <!--    List<ProductStandardVO> getStandardByName(String name);-->
+    <select id="getStandardByName"
+            resultMap="standardResultMap">
+        SELECT
+        <include refid="standardQueryFields"/>
+        FROM
+        rescookerdb.product_info
+        WHERE
+        product_info.name = #{name}
+    </select>
+
+    <!--    List<ProductStandardVO> list();-->
+    <select id="list"
+            resultMap="standardResultMap">
+        SELECT
+        <include refid="standardQueryFields"/>
+        FROM
+        rescookerdb.product_info
+    </select>
+
+    <!--    sql for StandardQueryFields-->
+    <sql id="standardQueryFields">
+        <if test="true">
+            product_info.id,
+            product_info.name,
+            product_info.img_url,
+            product_info.stock,
+            product_info.price,
+            product_info.cost,
+            product_info.sort,
+            product_info.status,
+            product_info.created_time,
+            product_info.modified_time
+        </if>
+    </sql>
+
+    <!--    resultMap for StandardQueryFields-->
+    <resultMap id="standardResultMap" type="com.example.rescooker.product.pojo.vo.ProductStandardVO"/>
+</mapper>

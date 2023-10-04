@@ -27,34 +27,9 @@ public class Product implements Serializable {
     private String name;
 
     /**
-     * 商品類別編號
-     */
-    private Long category_id;
-
-    /**
-     * 商品類別名稱
-     */
-    private String category_name;
-
-    /**
      * 商品圖片
      */
-    private String img_url;
-
-    /**
-     * 商品描述
-     */
-    private String description;
-
-    /**
-     * 商品供應商編號
-     */
-    private Long supplier_id;
-
-    /**
-     * 商品供應商名稱
-     */
-    private String supplier_name;
+    private String imgUrl;
 
     /**
      * 商品庫存
@@ -87,11 +62,11 @@ public class Product implements Serializable {
      * 商品上架時間
      */
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime created_time;
+    private LocalDateTime createdTime;
 
     /**
      * 最後修改時間
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime modified_time;
+    private LocalDateTime modifiedTime;
 }

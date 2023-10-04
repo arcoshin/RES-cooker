@@ -31,7 +31,7 @@ public interface IProductService {
      *
      * @param id 產品ID
      */
-    void delete(Long id);
+    void deleteById(Long id);
 
     /**
      * 修改產品

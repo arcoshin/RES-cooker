@@ -21,12 +21,12 @@ public class TimeMetaObjectHandler implements MetaObjectHandler {
     /**
      * 數據創建時間的屬性名
      */
-    public static final String FIELD_CREATE_TIME = "created_time";
+    public static final String FIELD_CREATE_TIME = "createdTime";
 
     /**
      * 最後修改時間的屬性名
      */
-    public static final String FIELD_UPDATE_TIME = "modified_time";
+    public static final String FIELD_UPDATE_TIME = "modifiedTime";
 
     public TimeMetaObjectHandler() {
         log.info("創建MyBatis Plus的自動填充數據的處理器對象：TimeMetaObjectHandler");

@@ -2,8 +2,8 @@ package com.example.rescooker.product.dao.repository.impl;
 
 import com.example.rescooker.common.pageInfo2PageData.PageData;
 import com.example.rescooker.common.pageInfo2PageData.PageInfoToPageDataConverter;
-import com.example.rescooker.product.dao.mapper.ProductInfoMapper;
-import com.example.rescooker.product.dao.repository.IProductInfoRepository;
+import com.example.rescooker.product.dao.mapper.ProductMapper;
+import com.example.rescooker.product.dao.repository.IProductRepository;
 import com.example.rescooker.product.pojo.entity.Product;
 import com.example.rescooker.product.pojo.vo.ProductStandardVO;
 import com.github.pagehelper.PageHelper;
@@ -22,14 +22,14 @@ import java.util.List;
  */
 @Slf4j
 @Repository
-public class ProductInfoRepositoryImpl implements IProductInfoRepository {
+public class ProductRepositoryImpl implements IProductRepository {
 
-    public ProductInfoRepositoryImpl() {
-        log.info("創建存儲庫對象：ProductInfoRepositoryImpl");
+    public ProductRepositoryImpl() {
+        log.info("創建存儲庫對象：ProductRepositoryImpl");
     }
 
     @Autowired
-    private ProductInfoMapper productInfoMapper;
+    private ProductMapper productMapper;
 
     /**
      * 插入產品數據
@@ -40,7 +40,7 @@ public class ProductInfoRepositoryImpl implements IProductInfoRepository {
     @Override
     public int insert(Product product) {
         log.debug("開始執行【插入產品】的數據訪問，參數：{}", product);
-        return productInfoMapper.insert(product);
+        return productMapper.insert(product);
     }
 
     /**
@@ -52,7 +52,7 @@ public class ProductInfoRepositoryImpl implements IProductInfoRepository {
     @Override
     public int deleteById(Long id) {
         log.debug("開始執行【根據ID刪除產品】的數據訪問，參數：{}", id);
-        return productInfoMapper.deleteById(id);
+        return productMapper.deleteById(id);
     }
 
     /**
@@ -64,7 +64,7 @@ public class ProductInfoRepositoryImpl implements IProductInfoRepository {
     @Override
     public int updateById(Product product) {
         log.debug("開始執行【根據ID修改產品】的數據訪問，參數：{}", product);
-        return productInfoMapper.updateById(product);
+        return productMapper.updateById(product);
     }
 
     /**
@@ -76,7 +76,19 @@ public class ProductInfoRepositoryImpl implements IProductInfoRepository {
     @Override
     public ProductStandardVO getStandardById(Long id) {
         log.debug("開始執行【根據ID查詢產品】的數據訪問，參數：{}", id);
-        return productInfoMapper.getStandardById(id);
+        return productMapper.getStandardById(id);
+    }
+
+    /**
+     * 根據產品名稱查詢產品數據
+     *
+     * @param name 產品名稱
+     * @return 匹配的產品數據查詢結果，若無則返回null
+     */
+    @Override
+    public List<ProductStandardVO> getStandardByName(String name) {
+        log.debug("開始執行【根據名稱查詢產品】的數據訪問，參數：{}", name);
+        return productMapper.getStandardByName(name);
     }
 
     /**
@@ -91,7 +103,7 @@ public class ProductInfoRepositoryImpl implements IProductInfoRepository {
         log.debug("開始執行【查詢產品列表】的數據訪問，頁碼：{}，每頁記錄數：{}", pageNum, pageSize);
 
         PageHelper.startPage(pageNum, pageSize);
-        List<ProductStandardVO> list = productInfoMapper.list();
+        List<ProductStandardVO> list = productMapper.list();
         PageInfo<ProductStandardVO> pageInfo = new PageInfo<>(list);
         PageData<ProductStandardVO> pageData = PageInfoToPageDataConverter.convert(pageInfo);
         return pageData;

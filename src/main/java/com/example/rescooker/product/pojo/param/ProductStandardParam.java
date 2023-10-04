@@ -25,34 +25,9 @@ public class ProductStandardParam implements Serializable {
     private String name;
 
     /**
-     * 商品類別編號
-     */
-    private Long category_id;
-
-    /**
-     * 商品類別名稱
-     */
-    private String category_name;
-
-    /**
      * 商品圖片
      */
     private String img_url;
-
-    /**
-     * 商品描述
-     */
-    private String description;
-
-    /**
-     * 商品供應商編號
-     */
-    private Long supplier_id;
-
-    /**
-     * 商品供應商名稱
-     */
-    private String supplier_name;
 
     /**
      * 商品庫存

@@ -45,7 +45,7 @@ res-cooker:
   # 數據訪問的相關配置
   dao:
     # 查詢數據時，默認的每頁記錄數，建議值爲10~30之間
-    default-query-page-size: 5
+    default-query-page-size: 10
 
   # 文件上傳的配置
   upload:
